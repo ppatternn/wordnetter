@@ -1,5 +1,2 @@
-This is a pet project that I have been working on a bit lately.  Sometimes, you find yourself looking for a word whose meaning is in between two words.  You don’t simply want a synonym for one, you want a common synonym for both.  That’s when you need the ‘In-Between Thesaurus’!
+Sometimes, you find yourself looking for a word whose meaning is in between two words.  You don’t simply want a synonym for one, you want a common synonym for both.  That’s when you need the ‘In-Between Thesaurus’!
 
-So I wrote a little Python script which uses the Big Huge Thesaurus API to search for the two words, then look for common entries between the two.  At the moment, it works OK for simple words which have a relatively similar definition.
-
-The next step is to add a method which, in the situations where the two given words do not have common entries, we then search through the entries themselves for common results (a certain # of levels or until received a certain # of results).
