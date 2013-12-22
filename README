@@ -1,2 +1,7 @@
-Sometimes, you find yourself looking for a word whose meaning is in between two words.  You don’t simply want a synonym for one, you want a common synonym for both.  That’s when you need the ‘In-Between Thesaurus’!
+requires:
 
+simplejson.ph
+
+run:
+
+> python ibt.py
