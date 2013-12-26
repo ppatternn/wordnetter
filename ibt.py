@@ -1,13 +1,13 @@
 """
 In-Between Thesaurus
-Robert Florance 1.4.2012
+Robert Florance 1.4.2012 - []
 """
 
-import requests, operator, sys, simplejson
-class IBT:
+import requests, simplejson
+import operator, sys
 
+class IBT:
     def __init__(self, api_ver, api_key, api_frmt, query1, query2):
-        
         self.api_ver = api_ver
         self.api_key = api_key
         self.api_frmt = api_frmt
@@ -15,7 +15,6 @@ class IBT:
         self.query2 = query2
 
     def query_bht(self, word):
-        
         url = "http://words.bighugelabs.com/api/" + self.api_ver + "/" + self.api_key +"/" + word + "/" + self.api_frmt
         r = requests.get(url)
         c = r.content
@@ -64,7 +63,8 @@ class IBT:
 
 if __name__ == "__main__":
     version = "2"
-    api_key = "507ab364c2e364a21c82d0ea6118f4c9"
+    api_key = open("apikey.txt", "r").readline().strip()
+    print api_key
     result_format = "json" 
     search1 = sys.argv[1]
     search2 = sys.argv[2]
@@ -72,7 +72,10 @@ if __name__ == "__main__":
     ibt = IBT(version, api_key, result_format, search1, search2)
 
     #Get full JSON response from big huge thesaurus
-    results1 = ibt.query_bht(search1)
+    try:
+        results1 = ibt.query_bht(search1)
+    except:
+        print "error getting matches"
     results2 = ibt.query_bht(search2)
     #Filter out only adjective synonyms
     syns1 = ibt.parse_adj_synonyms(results1)
