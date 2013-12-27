@@ -23,7 +23,7 @@ class BHTQuery:
             json = simplejson.loads(resp)
             return json
         else:
-            return None
+            return []
 
     @staticmethod
     def clean_results(jsonresult):
@@ -31,12 +31,12 @@ class BHTQuery:
         #TODO: disambiguate nouns, adjectives, and verbs
         if "adjective" in jsonresult:
             adj_result = jsonresult["adjective"]
-        if "syn" in adj_result:
-            result += adj_result["syn"]
-        if "sim" in adj_result:
-            result += adj_result["sim"]
-        if "rel" in adj_result:
-            result += adj_result["rel"]
+            if "syn" in adj_result:
+                result += adj_result["syn"]
+            if "sim" in adj_result:
+                result += adj_result["sim"]
+            if "rel" in adj_result:
+                result += adj_result["rel"]
         return result
 
 
@@ -63,17 +63,19 @@ if __name__ == "__main__":
     jsonresult1 = bq.query_word(word1)
     jsonresult2 = bq.query_word(word2)
 
-    if jsonresult1 is not None and jsonresult2 is not None:
-        #print simplejson.dumps(jsonresult1, indent=2)
-        res1 = BHTQuery.clean_results(jsonresult1)
-        res2 = BHTQuery.clean_results(jsonresult2)
+    res1 = BHTQuery.clean_results(jsonresult1)
+    res2 = BHTQuery.clean_results(jsonresult2)
 
-        links = WordLink.find_matches(res1, res2)
-        print "First word siblings: " + res1
-        print "Second word siblings: " + res2
-        print "Links: " + links
-    else:
-        print "Error finding matches... words may be too dissimilar, not found in thesaurus, or misspelled."
+    links = WordLink.find_matches(res1, res2)
+
+    print "First word siblings: " + ",".join(r for r in res1)
+    print "Second word siblings: " + ",".join(r for r in res2)
+    print "Links: " + ",".join(l for l in links)
+
+    #TODO: add limit to number of api calls
+    #cousins1 = list(set([BHTQuery.clean_results(bq.query_word(r)) for r in res1]))
+    #print "First word cousins: " + ",".join(c for c in cousins1)
+
 
 
 
