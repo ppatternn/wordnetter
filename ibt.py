@@ -1,6 +1,7 @@
 """
 In-Between Thesaurus
-Robert Florance 1.4.2012 - []
+Robert Florance 1.4.2012 - 12.26.13
+NOTE: use wordlink.py instead!
 """
 
 import requests, simplejson
@@ -15,11 +16,11 @@ class IBT:
         self.query2 = query2
 
     def query_bht(self, word):
-        url = "http://words.bighugelabs.com/api/" + self.api_ver + "/" + self.api_key +"/" + word + "/" + self.api_frmt
+        url = "http://words.bighugelabs.com/api/" + self.api_ver \
+              + "/" + self.api_key +"/" + word + "/" + self.api_frmt
         r = requests.get(url)
         c = r.content
         data = simplejson.loads(c)
-        print "\n ---------------Begin Raw JSON-----------------"
         print simplejson.dumps((data), indent=2)
         print "\n ---------------End Raw JSON-------------------"
         return data
@@ -89,17 +90,4 @@ if __name__ == "__main__":
     print further_matches
     #if len(matches) > 0: print matches, len(matches)
     #else: print "No relations found."
-
-
-
-
-
-
-
-
-
-
-
-
-
 
