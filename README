@@ -1,7 +1,8 @@
 requires:
 
-simplejson.ph
+simplejson.py: pip install simplejson
+requests.py: pip install requests
 
 run:
 
-> python ibt.py
+> python wordlink.py [word1] [word2]
