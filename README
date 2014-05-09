@@ -1,15 +1,11 @@
 desc:
+A simple little app to find common relatives of words and display them visually.
 
-simple script that query's bht and finds common synonyms/related words/similar words
-you will be prompted to enter two words.
+status:
+* only lists WordNet synsets for each word
 
-try out some of the combinations listed in test.txt
-
-requires:
-
-simplejson.py: pip install simplejson
-requests.py: pip install requests
-
-run:
-
-> python wordlink.py
+todo:
+* break synsets into parts of speech
+* highlight common synsets
+* make wordnet faster somehow
+* remember looked-up words & results
