@@ -10,6 +10,7 @@
     $(function() {
         $("#search").click(
                 function(){
+                    //TODO: put the wordlink.py host here!
                     var base = "http://127.0.0.1:5000";
                     var url1 = base + "/word/" + $("#word1").val();
                     var url2 = base + "/word/" + $("#word2").val();
@@ -25,11 +26,11 @@
 </script>
 <div class="wrap">
     <div class="left_col">
-        <span>a word:</span><input type="text" id="word1" placeholder="hot" value="hot">
+        <span>a word:</span><input type="text" id="word1" placeholder="like.. 'hot'">
     </div>
     <div class="right_col">
-        <span>another:</span><input type="text" id="word2" placeholder="cold" value="cold">
-        <button id="search">gogogo</button>
+        <span>another:</span><input type="text" id="word2" placeholder="..or 'cold'">
+        <button id="search">gogogo!</button>
     </div>
 </div>
 <br/>

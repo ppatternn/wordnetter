@@ -1,8 +1,8 @@
 desc:
-A simple little app to find common relatives of words and display them visually.
+a work in progress. simple little app to visualize common relatives of words.
 
 status:
-* only lists WordNet synsets for each word
+* just lists WordNet synsets for each word
 
 todo:
 * break synsets into parts of speech
