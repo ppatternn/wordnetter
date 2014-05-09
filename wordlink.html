@@ -1,0 +1,46 @@
+<html>
+<body>
+<style type="text/css">
+    .wrap { width:600px; margin:0 auto; }
+    .left_col { float:left; width:300px; }
+    .right_col { float:right; width:300px; }
+</style>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $("#search").click(
+                function(){
+                    var base = "http://127.0.0.1:5000";
+                    var url1 = base + "/word/" + $("#word1").val();
+                    var url2 = base + "/word/" + $("#word2").val();
+                    $.get(url1, function(data){
+                        $("#result1").html(JSON.stringify(data, undefined, 2));
+                    });
+                    $.get(url2, function(data){
+                        $("#result2").html(JSON.stringify(data, undefined, 2));
+                    });
+                }
+        );
+    });
+</script>
+<div class="wrap">
+    <div class="left_col">
+        <span>a word:</span><input type="text" id="word1" placeholder="hot" value="hot">
+    </div>
+    <div class="right_col">
+        <span>another:</span><input type="text" id="word2" placeholder="cold" value="cold">
+        <button id="search">gogogo</button>
+    </div>
+</div>
+<br/>
+<hr/>
+<div class="wrap">
+    <div class="left_col">
+        <p id="result1"></p>
+    </div>
+    <div class="right_col">
+        <p id="result2"></p>
+    </div>
+</div>
+</body>
+</html>
