@@ -2,19 +2,21 @@
 wordlink
 Robert Florance
 """
-import json
 from textblob import Word
-from flask import Flask
+from flask import Flask, render_template, jsonify
 
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return render_template('wordlink.html')
+
 @app.route('/word/<term>')
 def get_synset(term):
-    print(term)
     synsets = Word(term).synsets
-    syns = list(set([syn.name[:-5] for syn in synsets]))
-    result = json.dumps(syns)
-    return result
+    syns_raw = list(set([syn.name[:-5] for syn in synsets]))
+    syns = {'syns': syns_raw}
+    return jsonify(syns)
 
 if __name__ == '__main__':
     app.debug = True
