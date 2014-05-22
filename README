@@ -2,10 +2,11 @@ desc:
 a work in progress. simple little app to visualize common relatives of words.
 
 status:
-* just lists WordNet synsets for each word
+* just lists WordNet synsets for each word, highlighting the common ones
 
 todo:
+* database for remembering looked-up words, recording stats
+* make results clickable
 * break synsets into parts of speech
-* highlight common synsets
 * make wordnet faster somehow
-* remember looked-up words & results
+# less ugly
