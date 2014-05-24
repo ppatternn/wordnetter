@@ -1,4 +1,6 @@
 //TODO: stop writing javascript! i know this is terrible :(
+var history = []
+
 function on_load() {
     $(function() {
         $("#search").click(
@@ -14,10 +16,15 @@ function on_load() {
     });
 }
 function get_data(){
+    var url = "";
+    display_history($("#word1").val());
+    display_history($("#word2").val());
+    //var url = "http://127.0.0.1:5000";
     $.when(
-            $.ajax("/word/" + $("#word1").val()),
-            $.ajax("/word/" + $("#word2").val())
+            $.ajax(url + "/word/" + $("#word1").val()),
+            $.ajax(url + "/word/" + $("#word2").val())
         ).done(function(a1, a2){
+            //$("#raw").html(a1.toString());
             display_results(a1[0], a2[0]);
         });
 }
@@ -32,17 +39,32 @@ function display_results(data1, data2) {
     });
     $(".wordlink").click(
         function(){
-            if (this.classList[1] == ("left"))
+            if (this.classList[1] == ("left")){
                 $("#word1").val(this.innerHTML);
-            else
+                $("#word1").focus();
+            }
+            else {
                 $("#word2").val(this.innerHTML);
-            get_data();
+                $("#word2").focus();
+            }
+            //get_data();
+        }
+    );
+    $(".history").click(
+        function(){
+            $("#word1").val(this.innerHTML);
+            $("#word1").focus();
         }
     );
 }
+function display_history(word){
+    if (is_match(word, history) == false)
+        $("#history").append("<div class='history'>" + word + "</div>");
+        history.push(word);
+}
 function display_word(word, match, side){
     if (match == false)
-        return "<div class='wordlink " + side + "'>" + word + "</div>"
+        return "<div class='wordlink " + side + "'>" + word + "</dvi>"
     else
         return "<div style='color: limegreen' class='wordlink " + side + "'>" + word + "</div>"
 }
