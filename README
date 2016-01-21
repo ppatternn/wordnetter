@@ -1,13 +1,1 @@
-desc:
-wip. simple little app to visualize/explore common relatives of words.
-
-status:
-* lists WordNet synsets for each word, highlighting the common ones..
-... click on a result to search for its synsets
-
-todo:
-* increase search breadth for low-count synsets
-* database for remembering looked-up words, recording stats
-* break synsets into parts of speech
-* make wordnet faster somehow
-#lessugly
+desc: retrieves WordNet synset for a word
