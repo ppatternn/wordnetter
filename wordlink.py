@@ -17,7 +17,12 @@ def get_wordlinks():
 
     common = list(set(results1) & set(results2))
 
-    return render_template('wordlink.html', results1=results1, results2=results2, common=common)
+    return render_template('wordlink.html',
+                           term1=term1,
+                           term2=term2,
+                           results1=results1,
+                           results2=results2,
+                           common=common)
 
 def get_syns_list(term):
     results = []
