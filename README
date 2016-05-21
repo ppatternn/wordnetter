@@ -1,1 +1,10 @@
-devolution.
+
+finds common items in term synsets using WordNet
+
+to install:
+
+- clone and activate a virtual env
+- run:  $ pip install -r requirements.txt
+- download the nltk corpora by running:  $ python -m textblob.download_corpora
+- run:  $ python wordlink.py
+- goto http://0.0.0.0:5000/
