@@ -3,9 +3,10 @@
 <head> <link rel="stylesheet" type="text/css" href="../static/css/wordlink.css"> </head>
 
 <body>
-    <div><input type="text" id="term"></div>
-    <div><button id="search">Search</button></div>
-    </hr>  
+    <form action="." method="POST">
+      <input type="text" name="term">
+      <input type="submit" name="form" value="send">
+    </form>
     <div id="result"></div>
 </body>
 </html>
