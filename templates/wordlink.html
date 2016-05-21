@@ -3,10 +3,66 @@
 <head> <link rel="stylesheet" type="text/css" href="../static/css/wordlink.css"> </head>
 
 <body>
-    <form action="." method="POST">
-      <input type="text" name="term">
-      <input type="submit" name="form" value="send">
-    </form>
-    <div id="result"></div>
+
+<div>
+
+<h3>enter two terms, then submit.  will try to find common synonyms. right now it can take a while.</h3>
+
+<form action="/find" method="GET">
+    <table width=100% height=100%>
+        <tr>
+            <td width=33%>
+                <span>term 1:</span>
+                <input type="text" name="term1">
+            </td>
+            <td width=33%>
+                <input type="submit">
+            </td>
+            <td width=33%>
+                <span>term 2:</span>
+                <input type="text" name="term2">
+            </td>
+        </tr>
+        <tr>
+            <td width=33%>
+                <div>term 1 syns:</div>
+                <hr>
+            </td>
+            <td width=33%>
+                <div>common terms:</div>
+                <hr>
+            </td>
+            <td width=33%>
+                <div>term 2 syns:</div>
+                <hr>
+            </td>
+        </tr>
+        <tr>
+            <td width=33%>
+                <div id="result1">
+                    {%  for result in results1 %}
+                        <div>{{ result }}</div>
+                    {%  endfor %}
+                </div>
+            </td>
+            <td width=33%>
+                <div id="common">
+                    {%  for result in common %}
+                    <div>{{ result }}</div>
+                    {%  endfor %}
+                </div>
+            </td>
+            <td width=33%>
+                <div id="result2">
+                    {%  for result in results2 %}
+                        <div>{{ result }}</div>
+                    {%  endfor %}
+                </div>
+            </td>
+        </tr>
+    </table>
+</form>
+</div>
+
 </body>
 </html>
